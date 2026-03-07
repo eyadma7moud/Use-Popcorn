@@ -1,104 +1,63 @@
 import { useState } from "react";
+import { NavBar } from "./NavBar";
+import { Main } from "./Main";
 
-const questions = [
+const tempMovieData = [
   {
-    id: 3457,
-    question: "What language is React based on?",
-    answer: "JavaScript",
+    imdbID: "tt1375666",
+    Title: "Inception",
+    Year: "2010",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
   },
   {
-    id: 7336,
-    question: "What are the building blocks of React apps?",
-    answer: "Components",
+    imdbID: "tt0133093",
+    Title: "The Matrix",
+    Year: "1999",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
   },
   {
-    id: 8832,
-    question: "What's the name of the syntax we use to describe a UI in React?",
-    answer: "JSX",
-  },
-  {
-    id: 1297,
-    question: "How to pass data from parent to child components?",
-    answer: "Props",
-  },
-  {
-    id: 9103,
-    question: "How to give components memory?",
-    answer: "useState hook",
-  },
-  {
-    id: 2002,
-    question:
-      "What do we call an input element that is completely synchronised with state?",
-    answer: "Controlled element",
-  },
-  {
-    id: 5561,
-    question: "Which hook is used to perform side effects in React?",
-    answer: "useEffect hook",
-  },
-  {
-    id: 7782,
-    question: "How do you create a list of elements in React?",
-    answer: "Using map() function",
-  },
-  {
-    id: 9921,
-    question: "What is the purpose of keys in a list of React elements?",
-    answer: "To help React identify which items have changed",
-  },
-  {
-    id: 1134,
-    question:
-      "How do you prevent a child component from re-rendering unnecessarily?",
-    answer: "React.memo",
-  },
-  {
-    id: 8475,
-    question: "Which hook lets you access the context in React?",
-    answer: "useContext hook",
-  },
-  {
-    id: 6623,
-    question:
-      "What is the difference between controlled and uncontrolled components?",
-    answer:
-      "Controlled components have state managed by React, uncontrolled manage their own state",
+    imdbID: "tt6751668",
+    Title: "Parasite",
+    Year: "2019",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX300.jpg",
   },
 ];
 
+export const tempWatchedData = [
+  {
+    imdbID: "tt1375666",
+    Title: "Inception",
+    Year: "2010",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+    runtime: 148,
+    imdbRating: 8.8,
+    userRating: 10,
+  },
+  {
+    imdbID: "tt0088763",
+    Title: "Back to the Future",
+    Year: "1985",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    runtime: 116,
+    imdbRating: 8.5,
+    userRating: 9,
+  },
+];
+
+export const average = (arr) =>
+  arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+
 export default function App() {
+  const [movies, setMovies] = useState(tempMovieData);
   return (
-    <div className="app">
-      <FlashCards />
-    </div>
-  );
-}
-
-function FlashCards() {
-  const [selectedId, setSelectedId] = useState(null);
-
-  return (
-    <div className="flashcards">
-      {questions.map((question) => (
-        <div
-          className={`card ${question.id === selectedId ? "selected" : ""}`}
-          key={question.id}
-          onClick={() =>
-            setSelectedId(selectedId !== question.id ? question.id : null)
-          }
-        >
-          <div className="card-inner">
-            <div className="card-front">
-              <p>{question.question}</p>
-            </div>
-
-            <div className="card-back">
-              <p>{question.answer}</p>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
+    <>
+      <NavBar movies={movies} />
+      <Main movies={movies} />
+    </>
   );
 }
