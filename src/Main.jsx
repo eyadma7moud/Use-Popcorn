@@ -1,11 +1,7 @@
-import { WatchedBox } from "./WachedSummary";
-import { ListBox } from "./ListBox";
-
-export function Main({ movies }) {
+export function Main({ children }) {
   return (
     <main className="main">
-      <ListBox movies={movies} />
-      <WatchedBox />
+      {children}
     </main>
   );
 }

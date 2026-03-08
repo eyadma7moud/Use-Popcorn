@@ -1,7 +1,6 @@
-import { useState } from "react";
-import { average, tempWatchedData } from "./App";
+import { average } from "./utils";
 
-export function WachedSummary({ watched }) {
+export function WatchedSummary({ watched }) {
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
   const avgUserRating = average(watched.map((movie) => movie.userRating));
   const avgRuntime = average(watched.map((movie) => movie.runtime));
@@ -29,9 +28,10 @@ export function WachedSummary({ watched }) {
     </div>
   );
 }
-export function WachedMovie({ movie }) {
+
+export function WatchedMovie({ movie }) {
   return (
-    <li key={movie.imdbID}>
+    <li>
       <img src={movie.Poster} alt={`${movie.Title} poster`} />
       <h3>{movie.Title}</h3>
       <div>
@@ -51,32 +51,12 @@ export function WachedMovie({ movie }) {
     </li>
   );
 }
-export function WatchedBox() {
-  const [watched, setWatched] = useState(tempWatchedData);
-  const [isOpen2, setIsOpen2] = useState(true);
 
-  return (
-    <div className="box">
-      <button
-        className="btn-toggle"
-        onClick={() => setIsOpen2((open) => !open)}
-      >
-        {isOpen2 ? "–" : "+"}
-      </button>
-      {isOpen2 && (
-        <>
-          <WachedSummary watched={watched} />
-          <WatchedMovieList watched={watched} />
-        </>
-      )}
-    </div>
-  );
-}
-function WatchedMovieList({ watched }) {
+export function WatchedMovieList({ watched }) {
   return (
     <ul className="list">
       {watched.map((movie) => (
-        <WachedMovie movie={movie} />
+        <WatchedMovie movie={movie} key={movie.imdbID}/>
       ))}
     </ul>
   );
