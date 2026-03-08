@@ -1,18 +1,24 @@
-# React FlashCards
+# 🍿 UsePopcorn
 
-React FlashCards is an interactive learning tool that helps developers review and memorize React concepts efficiently.  
-Users can click on a card to flip it and see the answer, making studying more engaging.  
-Fully responsive design ensures smooth experience on both desktop and mobile devices.
+UsePopcorn is a small React application built while following the React course by Jonas Schmedtmann.
+The app allows users to search for movies, view movie details, and keep a personal list of watched movies with ratings.
 
-## Features
+## 🚀 Features
 
-- Flip cards animation with smooth 3D effect
-- Responsive layout for desktop, tablet, and mobile
-- Highlight selected cards for better focus
-- Easy to add new questions in the `questions.js` file
+* 🔍 Search for movies
+* 🎬 View movie details (poster, rating, plot, etc.)
+* ⭐ Rate movies you watched
+* 📋 Add movies to a watched list
+* 📊 Track statistics like:
 
-## Technologies Used
+  * Average rating
+  * Average runtime
+  * Number of watched movies
+* 💾 Data stored in Local Storage
 
-- React
-- CSS3 (Flexbox, Grid, Transitions)
-- Google Fonts
+## 🛠️ Built With
+
+* React
+* JavaScript (ES6+)
+* CSS
+* Movie API (OMDb API)
