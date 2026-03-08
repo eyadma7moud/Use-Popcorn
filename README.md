@@ -1,7 +1,6 @@
 # 🍿 UsePopcorn
 
-UsePopcorn is a small React application built while following the React course by Jonas Schmedtmann.
-The app allows users to search for movies, view movie details, and keep a personal list of watched movies with ratings.
+UsePopcorn is a small React application that allows users to search for movies, view movie details, and keep a personal list of watched movies with ratings.
 
 ## 🚀 Features
 
