@@ -29,11 +29,15 @@ export function WatchedSummary({ watched }) {
   );
 }
 
-export function WatchedMovie({ movie }) {
+export function WatchedMovie({ movie , onDeleteMovie}) {
+  function deleteMovie(){
+    onDeleteMovie(movie.imdbID)
+  }
+  
   return (
     <li>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
-      <h3>{movie.Title}</h3>
+      <img src={movie.poster} alt={`${movie.title} poster`} />
+      <h3>{movie.title}</h3>
       <div>
         <p>
           <span>⭐️</span>
@@ -48,15 +52,18 @@ export function WatchedMovie({ movie }) {
           <span>{movie.runtime} min</span>
         </p>
       </div>
+
+      <button className="btn-delete" onClick={deleteMovie}>❌</button>
+
     </li>
   );
 }
 
-export function WatchedMovieList({ watched }) {
+export function WatchedMovieList({ watched, onDeleteMovie }) {
   return (
     <ul className="list">
       {watched.map((movie) => (
-        <WatchedMovie movie={movie} key={movie.imdbID}/>
+        <WatchedMovie movie={movie} key={movie.imdbID} onDeleteMovie={onDeleteMovie}/>
       ))}
     </ul>
   );
