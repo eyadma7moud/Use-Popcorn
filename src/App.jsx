@@ -10,7 +10,7 @@ import { WatchedSummary } from "./WatchedMovies";
 import { StarRating } from "./StarRating";
 import { useMovie } from "./useMovie";
 
-const KEY = "5e575cbf";
+const KEY = import.meta.env.VITE_API_KEY;
 
 export default function App() {
   const [selectedId, setSelectedId] = useState(null);
@@ -162,7 +162,7 @@ function MovieDetails({ id, onCloseMovie, onAddWatched, watched }) {
       async function getMovieDetails() {
         setIsLoading(true);
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&i=${id}`,
+          `https://www.omdbapi.com/?apikey=${KEY}&i=${id}`,
         );
         const data = await res.json();
 
