@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 
-const KEY = "5e575cbf";
+const KEY = import.meta.env.VITE_API_KEY;
 
 export function useMovie(query) {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,7 +16,7 @@ export function useMovie(query) {
           setIsLoading(true);
           setError("");
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
+            `https://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
             { signal: controller.signal },
           );
 
