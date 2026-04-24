@@ -8,4 +8,5 @@ export function Search({ query, setQuery }) {
       onChange={(e) => setQuery(e.target.value)}
     />
   );
+  
 }
